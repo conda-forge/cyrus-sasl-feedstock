@@ -19,7 +19,7 @@ source:
 build:
   number: 1
   script:
-    - ./configure --prefix=$PREFIX --with-plugindir=$PREFIX/lib/sasl2 # [linux]
+    - ./configure --prefix=$PREFIX --with-plugindir=$PREFIX/lib/sasl2  # [linux]
     - ./configure --prefix=$PREFIX --with-plugindir=$PREFIX/lib/sasl2 --disable-macos-framework  # [osx]
     - make
     - make install
