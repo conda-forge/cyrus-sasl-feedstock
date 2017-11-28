@@ -17,10 +17,10 @@ source:
     - lib_makefile.patch  # [osx]
 
 build:
-  number: 0
+  number: 1
   script:
-    - ./configure --prefix=$PREFIX  # [linux]
-    - ./configure --prefix=$PREFIX --disable-macos-framework  # [osx]
+    - ./configure --prefix=$PREFIX --with-plugindir=$PREFIX/lib/sasl2  # [linux]
+    - ./configure --prefix=$PREFIX --with-plugindir=$PREFIX/lib/sasl2 --disable-macos-framework  # [osx]
     - make
     - make install
   skip: True  # [win]
