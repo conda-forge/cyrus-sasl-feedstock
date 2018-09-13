@@ -17,7 +17,7 @@ source:
     - lib_makefile.patch  # [osx]
 
 build:
-  number: 1
+  number: 1001
   script:
     - ./configure --prefix=$PREFIX --with-plugindir=$PREFIX/lib/sasl2  # [linux]
     - ./configure --prefix=$PREFIX --with-plugindir=$PREFIX/lib/sasl2 --disable-macos-framework  # [osx]
