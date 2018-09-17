@@ -27,14 +27,17 @@ build:
 
 requirements:
   build:
-    - toolchain
-    - krb5 1.14.*
-    - openssl 1.0.*
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make
+  host:  
+    - krb5
+    - openssl
     - libntlm
 
   run:
-    - krb5 1.14.*
-    - openssl 1.0.*
+    - krb5
+    - openssl
     - libntlm
 
 test:
