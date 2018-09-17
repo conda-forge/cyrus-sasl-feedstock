@@ -49,6 +49,10 @@ requirements:
     - krb5
     - openssl
     - libntlm
+  run:
+    - krb5
+    - openssl
+    - libntlm
 
 about:
   home: https://www.cyrusimap.org/sasl/
