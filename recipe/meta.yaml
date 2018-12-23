@@ -26,7 +26,7 @@ source:
   #   fn: config.sub
 
 build:
-  number: 3
+  number: 1004
   skip: True  # [win]
   missing_dso_whitelist:          # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
