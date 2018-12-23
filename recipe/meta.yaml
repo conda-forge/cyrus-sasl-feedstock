@@ -8,7 +8,8 @@ package:
   version: {{ version }}
 
 source:
-  - url: ftp://ftp.cyrusimap.org/cyrus-sasl/{{ name }}-{{ version }}.tar.gz
+  - url: https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-{{ version }}/cyrus-sasl-{{ version }}.tar.gz
+  #- url: ftp://ftp.cyrusimap.org/cyrus-sasl/{{ name }}-{{ version }}.tar.gz
     {{ hashtype }}: {{ hash }}
     patches:
       - 0001-Include-stddef-in-sasl-h-for-size_t.patch
