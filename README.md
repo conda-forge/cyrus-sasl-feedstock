@@ -1,6 +1,8 @@
 About cyrus-sasl
 ================
 
+[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
+
 Home: https://www.cyrusimap.org/sasl/
 
 Package license: BSD-3-Clause-Attribution
@@ -110,3 +112,12 @@ In order to produce a uniquely identifiable distribution:
  * If the version of a package **is** being increased, please remember to return
    the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
    back to 0.
+
+Feedstock Maintainers
+=====================
+
+* [@mariusvniekerk](https://github.com/mariusvniekerk/)
+* [@martindurant](https://github.com/martindurant/)
+* [@mingwandroid](https://github.com/mingwandroid/)
+* [@wesm](https://github.com/wesm/)
+
