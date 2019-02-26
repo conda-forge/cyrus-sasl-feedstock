@@ -1,5 +1,5 @@
 {% set name = "cyrus-sasl" %}
-{% set version = "2.1.26" %}
+{% set version = "2.1.27" %}
 {% set hashtype = "sha256" %}
 {% set hash = "8fbc5136512b59bb793657f36fadda6359cae3b08f01fd16b3d406f1345b7bc3" %}
 
@@ -27,7 +27,7 @@ source:
   #   fn: config.sub
 
 build:
-  number: 1005
+  number: 0
   skip: True  # [win]
   missing_dso_whitelist:          # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
