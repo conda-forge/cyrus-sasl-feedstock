@@ -1,11 +1,13 @@
 #!/bin/bash
 
 # ++awful .. broken configure script here, it does not look in include/openssl
-cp -f ${PREFIX}/include/openssl/des.h ${PREFIX}/include
+# cp -f ${PREFIX}/include/openssl/des.h ${PREFIX}/include
 
 if [[ ${target_platform} == osx-64 ]]; then
   DISABLE_MACOS_FRAMEWORK=--disable-macos-framework
 fi
+
+autoreconf -vfi
 
 if [[ ${target_platform} =~ .*ppc.* ]]; then
   # We should probably run autoreconf here instead, but I am tired of this software.
