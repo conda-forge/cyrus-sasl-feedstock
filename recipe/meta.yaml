@@ -42,10 +42,10 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    # - libtool
-    # - pkg-config
-    # - automake
-    # - autoconf
+    - libtool
+    - pkg-config
+    - automake
+    - autoconf
     - make
   host:
     - krb5
