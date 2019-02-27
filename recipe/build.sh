@@ -10,7 +10,7 @@ fi
 
 if [[ ${target_platform} =~ .*ppc.* ]]; then
   # We should probably run autoreconf here instead, but I am tired of this software.
-  BUILD="--build=${HOST}"
+  BUILD_FLAG="--build=${HOST}"
   GSSAPI="--disable-gssapi"
   if [[ 0 == 1 ]]; then
     echo libtoolize
@@ -26,15 +26,15 @@ if [[ ${target_platform} =~ .*ppc.* ]]; then
   fi
 fi
 
-export CC=$(basename $CC)
-export GCC=$(basename $GCC)
+# Cyrus sasl REALLY wants something called gcc to exist.  Desperately
+ln -s ${CC} ${BUILD_PREFIX}/bin/gcc
 
 autoreconf -vfi
 # --disable-dependency-tracking works around:
 # https://forums.gentoo.org/viewtopic-t-366917-start-0.html
 ./configure --prefix=${PREFIX}                    \
             --host=${HOST}                        \
-            ${BUILD}                              \
+            ${BUILD_FLAG}                         \
             ${GSSAPI}                             \
             --enable-digest                       \
             --with-des=${PREFIX}                  \
