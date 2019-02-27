@@ -61,6 +61,10 @@ if [[ ${target_platform} == osx-64 ]]; then
     mv ${PREFIX}/sbin/x86_64-apple-darwin*-sasldblistusers2 ${PREFIX}/sbin/sasldblistusers2
   else
     # modern compilers
+    echo "DEBUGDEBUGDEBUGDEBUG"
+    ls ${PREFIX}/sbin
+    echo "DEBUGDEBUGDEBUGDEBUG"
+
     mv ${PREFIX}/sbin/${HOST}-pluginviewer ${PREFIX}/sbin/pluginviewer
     mv ${PREFIX}/sbin/${HOST}-saslpasswd2 ${PREFIX}/sbin/saslpasswd2
     mv ${PREFIX}/sbin/${HOST}-sasldblistusers2 ${PREFIX}/sbin/sasldblistusers2
