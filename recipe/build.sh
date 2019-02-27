@@ -60,14 +60,17 @@ if [[ ${target_platform} == osx-64 ]]; then
     mv ${PREFIX}/sbin/x86_64-apple-darwin*-saslpasswd2 ${PREFIX}/sbin/saslpasswd2
     mv ${PREFIX}/sbin/x86_64-apple-darwin*-sasldblistusers2 ${PREFIX}/sbin/sasldblistusers2
   else
-    # modern compilers
-    echo "DEBUGDEBUGDEBUGDEBUG"
-    ls ${PREFIX}/sbin
-    echo "DEBUGDEBUGDEBUGDEBUG"
-
-    mv ${PREFIX}/sbin/${HOST}-pluginviewer ${PREFIX}/sbin/pluginviewer
-    mv ${PREFIX}/sbin/${HOST}-saslpasswd2 ${PREFIX}/sbin/saslpasswd2
-    mv ${PREFIX}/sbin/${HOST}-sasldblistusers2 ${PREFIX}/sbin/sasldblistusers2
+    # modern compilers   
+    # Some older versions of sasl had strange names.
+    if [ -f ${PREFIX}/sbin/${HOST}-pluginviewer ]; then
+      mv ${PREFIX}/sbin/${HOST}-pluginviewer ${PREFIX}/sbin/pluginviewer
+    fi
+    if [ -f ${PREFIX}/sbin/${HOST}-pluginviewer ]; then
+      mv ${PREFIX}/sbin/${HOST}-saslpasswd2 ${PREFIX}/sbin/saslpasswd2
+    fi
+    if [ -f ${PREFIX}/sbin/${HOST}-sasldblistusers2 ]; then
+      mv ${PREFIX}/sbin/${HOST}-sasldblistusers2 ${PREFIX}/sbin/sasldblistusers2
+    fi
   fi
   ${INSTALL_NAME_TOOL:-install_name_tool} -id @rpath/libsasl2.dylib ${PREFIX}/lib/libsasl2.dylib
   ${INSTALL_NAME_TOOL:-install_name_tool} -change /libsasl2.dylib @rpath/libsasl2.dylib ${PREFIX}/sbin/pluginviewer
