@@ -2,10 +2,8 @@ MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 VERBOSE_AT:
 - V=1
-build_number_decrement:
-- '1000'
 c_compiler:
-- toolchain_c
+- clang
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -17,7 +15,7 @@ macos_machine:
 macos_min_version:
 - '10.9'
 openssl:
-- 1.0.2
+- 1.1.1a
 pin_run_as_build:
   krb5:
     max_pin: x.x
@@ -25,8 +23,3 @@ pin_run_as_build:
     max_pin: x.x.x
 target_platform:
 - osx-64
-zip_keys:
-- - c_compiler
-  - channel_sources
-  - channel_targets
-  - build_number_decrement

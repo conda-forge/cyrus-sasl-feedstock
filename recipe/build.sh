@@ -1,7 +1,8 @@
 #!/bin/bash
+set -x
 
 # ++awful .. broken configure script here, it does not look in include/openssl
-cp -f ${PREFIX}/include/openssl/des.h ${PREFIX}/include
+# cp -f ${PREFIX}/include/openssl/des.h ${PREFIX}/include
 
 if [[ ${target_platform} == osx-64 ]]; then
   DISABLE_MACOS_FRAMEWORK=--disable-macos-framework
@@ -9,7 +10,7 @@ fi
 
 if [[ ${target_platform} =~ .*ppc.* ]]; then
   # We should probably run autoreconf here instead, but I am tired of this software.
-  BUILD="--build=${HOST}"
+  BUILD_FLAG="--build=${HOST}"
   GSSAPI="--disable-gssapi"
   if [[ 0 == 1 ]]; then
     echo libtoolize
@@ -25,11 +26,15 @@ if [[ ${target_platform} =~ .*ppc.* ]]; then
   fi
 fi
 
+# Cyrus sasl REALLY wants something called gcc to exist.  Desperately
+ln -s ${CC} ${BUILD_PREFIX}/bin/gcc
+
+autoreconf -vfi
 # --disable-dependency-tracking works around:
 # https://forums.gentoo.org/viewtopic-t-366917-start-0.html
 ./configure --prefix=${PREFIX}                    \
             --host=${HOST}                        \
-            ${BUILD}                              \
+            ${BUILD_FLAG}                         \
             ${GSSAPI}                             \
             --enable-digest                       \
             --with-des=${PREFIX}                  \
@@ -55,10 +60,17 @@ if [[ ${target_platform} == osx-64 ]]; then
     mv ${PREFIX}/sbin/x86_64-apple-darwin*-saslpasswd2 ${PREFIX}/sbin/saslpasswd2
     mv ${PREFIX}/sbin/x86_64-apple-darwin*-sasldblistusers2 ${PREFIX}/sbin/sasldblistusers2
   else
-    # modern compilers
-    mv ${PREFIX}/sbin/${HOST}-pluginviewer ${PREFIX}/sbin/pluginviewer
-    mv ${PREFIX}/sbin/${HOST}-saslpasswd2 ${PREFIX}/sbin/saslpasswd2
-    mv ${PREFIX}/sbin/${HOST}-sasldblistusers2 ${PREFIX}/sbin/sasldblistusers2
+    # modern compilers   
+    # Some older versions of sasl had strange names.
+    if [ -f ${PREFIX}/sbin/${HOST}-pluginviewer ]; then
+      mv ${PREFIX}/sbin/${HOST}-pluginviewer ${PREFIX}/sbin/pluginviewer
+    fi
+    if [ -f ${PREFIX}/sbin/${HOST}-pluginviewer ]; then
+      mv ${PREFIX}/sbin/${HOST}-saslpasswd2 ${PREFIX}/sbin/saslpasswd2
+    fi
+    if [ -f ${PREFIX}/sbin/${HOST}-sasldblistusers2 ]; then
+      mv ${PREFIX}/sbin/${HOST}-sasldblistusers2 ${PREFIX}/sbin/sasldblistusers2
+    fi
   fi
   ${INSTALL_NAME_TOOL:-install_name_tool} -id @rpath/libsasl2.dylib ${PREFIX}/lib/libsasl2.dylib
   ${INSTALL_NAME_TOOL:-install_name_tool} -change /libsasl2.dylib @rpath/libsasl2.dylib ${PREFIX}/sbin/pluginviewer
