@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 # ++awful .. broken configure script here, it does not look in include/openssl
 # cp -f ${PREFIX}/include/openssl/des.h ${PREFIX}/include
