@@ -1,7 +1,5 @@
 {% set name = "cyrus-sasl" %}
 {% set version = "2.1.27" %}
-{% set hashtype = "sha256" %}
-{% set hash = "26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5" %}
 
 package:
   name: {{ name }}
@@ -10,25 +8,17 @@ package:
 source:
   # The source releases are strange.  Lets use the tagged source tarball instead
   # - url: https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-{{ version }}/cyrus-sasl-{{ version }}.tar.gz
+  # - sha256: 26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5
+  
   - url: https://github.com/cyrusimap/cyrus-sasl/archive/cyrus-sasl-{{ version }}.tar.gz
+  - sha256: b564d773803dc4cff42d2bdc04c80f2b105897a724c247817d4e4a99dd6b9976
   #- url: ftp://ftp.cyrusimap.org/cyrus-sasl/{{ name }}-{{ version }}.tar.gz
-    {{ hashtype }}: {{ hash }}
-    patches:
-      # - 0001-Include-stddef-in-sasl-h-for-size_t.patch
-      - makefile.patch  # [osx]
-      - include_makefile.patch  # [osx]
-      - lib_makefile.patch  # [osx]
-      # This is already included in 2.1.17
-      # - CVE-2013-4122-dedad73e5e7a75d01a5f3d5a6702ab8ccd2ff40d.patch
-  #    - 1cbb299fd90097c10a4608119f3fb567d757e8be.patch
-  # - url: https://github.com/cyrusimap/cyrus-sasl/raw/master/autogen.sh
-  #   fn: cyrus-sasl-autogen.sh
-  #   sha256: 59b2d067f956a2613bf6348fb3bfeb7f4197c53427fda3ac2774a143f9373eca
-  # - url: http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
-  #   fn: config.guess
-  # - url: http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD
-  #   fn: config.sub
-
+  patches:
+    # - 0001-Include-stddef-in-sasl-h-for-size_t.patch
+    - makefile.patch  # [osx]
+    - include_makefile.patch  # [osx]
+    - lib_makefile.patch  # [osx]
+    
 build:
   number: 0
   skip: True  # [win]
