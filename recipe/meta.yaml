@@ -8,11 +8,11 @@ package:
 source:
   # The source releases are strange.  Lets use the tagged source tarball instead
   # - url: https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-{{ version }}/cyrus-sasl-{{ version }}.tar.gz
-  # - sha256: 26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5
+  #   sha256: 26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5
+  # - url: ftp://ftp.cyrusimap.org/cyrus-sasl/{{ name }}-{{ version }}.tar.gz
   
   - url: https://github.com/cyrusimap/cyrus-sasl/archive/cyrus-sasl-{{ version }}.tar.gz
-  - sha256: b564d773803dc4cff42d2bdc04c80f2b105897a724c247817d4e4a99dd6b9976
-  #- url: ftp://ftp.cyrusimap.org/cyrus-sasl/{{ name }}-{{ version }}.tar.gz
+    sha256: b564d773803dc4cff42d2bdc04c80f2b105897a724c247817d4e4a99dd6b9976
   patches:
     # - 0001-Include-stddef-in-sasl-h-for-size_t.patch
     - makefile.patch  # [osx]
