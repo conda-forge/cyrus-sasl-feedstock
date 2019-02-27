@@ -29,7 +29,7 @@ fi
 export CC=$(basename $CC)
 export GCC=$(basename $GCC)
 
-./autogen.sh
+autoreconf -vfi
 # --disable-dependency-tracking works around:
 # https://forums.gentoo.org/viewtopic-t-366917-start-0.html
 ./configure --prefix=${PREFIX}                    \
