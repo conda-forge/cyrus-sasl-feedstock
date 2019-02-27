@@ -48,6 +48,10 @@ requirements:
     - krb5
     - openssl
     - libntlm
+    
+test:
+  commands:
+    - echo "DONE"
 
 about:
   home: https://www.cyrusimap.org/sasl/
