@@ -16,9 +16,10 @@ source:
   
   patches:
     # - 0001-Include-stddef-in-sasl-h-for-size_t.patch
-    - makefile.patch  # [osx]
-    - include_makefile.patch  # [osx]
-    - lib_makefile.patch  # [osx]
+    # Patches for disabling framework things
+    #- makefile.patch  # [osx]
+    #- include_makefile.patch  # [osx]
+    #- lib_makefile.patch  # [osx]
     
 build:
   number: 0
