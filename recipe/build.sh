@@ -8,8 +8,6 @@ if [[ ${target_platform} == osx-64 ]]; then
   DISABLE_MACOS_FRAMEWORK=--disable-macos-framework
 fi
 
-autoreconf -vfi
-
 if [[ ${target_platform} =~ .*ppc.* ]]; then
   # We should probably run autoreconf here instead, but I am tired of this software.
   BUILD="--build=${HOST}"
@@ -31,6 +29,7 @@ fi
 export CC=$(basename $CC)
 export GCC=$(basename $GCC)
 
+./autogen.sh
 # --disable-dependency-tracking works around:
 # https://forums.gentoo.org/viewtopic-t-366917-start-0.html
 ./configure --prefix=${PREFIX}                    \
