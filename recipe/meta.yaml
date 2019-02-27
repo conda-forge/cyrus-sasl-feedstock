@@ -8,7 +8,9 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-{{ version }}/cyrus-sasl-{{ version }}.tar.gz
+  # The source releases are strange.  Lets use the tagged source tarball instead
+  # - url: https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-{{ version }}/cyrus-sasl-{{ version }}.tar.gz
+  - url: https://github.com/cyrusimap/cyrus-sasl/archive/cyrus-sasl-{{ version }}.tar.gz
   #- url: ftp://ftp.cyrusimap.org/cyrus-sasl/{{ name }}-{{ version }}.tar.gz
     {{ hashtype }}: {{ hash }}
     patches:
