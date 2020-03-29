@@ -22,7 +22,7 @@ source:
     #- lib_makefile.patch  # [osx]
     
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
   missing_dso_whitelist:          # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
