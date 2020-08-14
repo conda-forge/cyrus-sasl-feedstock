@@ -42,6 +42,7 @@ requirements:
     - automake
     - autoconf
     - make
+    - groff  # [unix]
   host:
     - krb5
     - openssl
