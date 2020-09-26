@@ -69,6 +69,10 @@ autoreconf --verbose --force --install -Wno-portability || exit 1
             --disable-dependency-tracking         \
             ${DISABLE_MACOS_FRAMEWORK} || { cat config.log; exit 1; }
 cat config.log
+
+echo "Makefile looks like:"
+cat include/Makefile
+
 # Parallel builds fail frequently.
 make -j1 ${VERBOSE_AT}
 make install
