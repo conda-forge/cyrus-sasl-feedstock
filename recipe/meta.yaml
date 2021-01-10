@@ -20,6 +20,7 @@ source:
     #- makefile.patch  # [osx]
     #- include_makefile.patch  # [osx]
     #- lib_makefile.patch  # [osx]
+    - osx_arm.patch  # [osx]
     
 build:
   number: 1

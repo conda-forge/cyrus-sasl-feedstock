@@ -1,0 +1,11 @@
+--- m4/sasl2.m4.orig    2021-01-09 10:06:46.000000000 -0800
++++ m4/sasl2.m4 2021-01-09 10:07:06.000000000 -0800
+@@ -339,7 +339,7 @@
+ ],
+        [ AC_DEFINE(HAVE_GSS_SPNEGO,,[Define if your GSSAPI implementation supports SPNEGO])
+        AC_MSG_RESULT(yes) ],
+-       AC_MSG_RESULT(no))
++       AC_MSG_RESULT(no), AC_MSG_RESULT(yes))
+   LIBS="$cmu_save_LIBS"
+ 
+ else
