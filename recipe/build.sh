@@ -4,7 +4,7 @@ set -x
 # ++awful .. broken configure script here, it does not look in include/openssl
 # cp -f ${PREFIX}/include/openssl/des.h ${PREFIX}/include
 
-if [[ ${target_platform} == osx-64 ]]; then
+if [[ ${target_platform} == osx-* ]]; then
   DISABLE_MACOS_FRAMEWORK=--disable-macos-framework
 fi
 
@@ -52,25 +52,16 @@ make install
 rm -f ${PREFIX}/include/des.h
 
 # ++awful
-if [[ ${target_platform} == osx-64 ]]; then
-  # modern compilers
-  if [[ ${CC} == clang ]]; then
-    # legacy toolchain
-    mv ${PREFIX}/sbin/x86_64-apple-darwin*-pluginviewer ${PREFIX}/sbin/pluginviewer
-    mv ${PREFIX}/sbin/x86_64-apple-darwin*-saslpasswd2 ${PREFIX}/sbin/saslpasswd2
-    mv ${PREFIX}/sbin/x86_64-apple-darwin*-sasldblistusers2 ${PREFIX}/sbin/sasldblistusers2
-  else
-    # modern compilers   
-    # Some older versions of sasl had strange names.
-    if [ -f ${PREFIX}/sbin/${HOST}-pluginviewer ]; then
-      mv ${PREFIX}/sbin/${HOST}-pluginviewer ${PREFIX}/sbin/pluginviewer
-    fi
-    if [ -f ${PREFIX}/sbin/${HOST}-pluginviewer ]; then
-      mv ${PREFIX}/sbin/${HOST}-saslpasswd2 ${PREFIX}/sbin/saslpasswd2
-    fi
-    if [ -f ${PREFIX}/sbin/${HOST}-sasldblistusers2 ]; then
-      mv ${PREFIX}/sbin/${HOST}-sasldblistusers2 ${PREFIX}/sbin/sasldblistusers2
-    fi
+if [[ ${target_platform} == osx-* ]]; then
+  # Some older versions of sasl had strange names.
+  if [ -f ${PREFIX}/sbin/${HOST}-pluginviewer ]; then
+    mv ${PREFIX}/sbin/${HOST}-pluginviewer ${PREFIX}/sbin/pluginviewer
+  fi
+  if [ -f ${PREFIX}/sbin/${HOST}-pluginviewer ]; then
+    mv ${PREFIX}/sbin/${HOST}-saslpasswd2 ${PREFIX}/sbin/saslpasswd2
+  fi
+  if [ -f ${PREFIX}/sbin/${HOST}-sasldblistusers2 ]; then
+    mv ${PREFIX}/sbin/${HOST}-sasldblistusers2 ${PREFIX}/sbin/sasldblistusers2
   fi
   ${INSTALL_NAME_TOOL:-install_name_tool} -id @rpath/libsasl2.dylib ${PREFIX}/lib/libsasl2.dylib
   ${INSTALL_NAME_TOOL:-install_name_tool} -change /libsasl2.dylib @rpath/libsasl2.dylib ${PREFIX}/sbin/pluginviewer
