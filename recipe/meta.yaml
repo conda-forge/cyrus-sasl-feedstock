@@ -21,10 +21,16 @@ source:
     #- include_makefile.patch  # [osx]
     #- lib_makefile.patch  # [osx]
     - osx_arm.patch  # [osx]
+    - patches/0001-Include-stddef-in-sasl.h-for-size_t.patch  # [win]
+    - patches/0002-adjust-Makefile.am-files-for-osx.patch  # [win]
+    - patches/0003-windows-fixes.patch  # [win]
+    - patches/0004-openssl-1.1.1-support-on-windows.patch  # [win]
+    - patches/0005-win32-Disable-staticopen-stuff.patch  # [win]
+    - patches/0006-win32-Define-GCC_FALLTHROUGH.patch  # [win]
+    - patches/0007-win32-Skip-building-documentation-doc-folder-has-no-.patch  # [win]
     
 build:
-  number: 2
-  skip: True  # [win]
+  number: 3
   missing_dso_whitelist:          # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
     - /usr/lib/libpam.2.dylib     # [osx]
@@ -38,24 +44,32 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - libtool
-    - pkg-config
-    - automake
-    - autoconf
-    - make
+    - libtool  # [unix]
+    - pkg-config  # [unix]
+    - automake  # [unix]
+    - autoconf  # [unix]
+    - make  # [unix]
     - groff  # [unix]
+    - m2-bash  # [win]
+    - m2-patch  # [win]
+    - m2-gcc-libs  # [win]
   host:
-    - krb5
+    - krb5  # [unix]
     - openssl
-    - libntlm
+    - libdb ==6.2.*  # [win]
+    - libntlm  # [unix]
+    - sqlite  # [win]
+    - ldap3  # [win]
   run:
     - krb5
     - openssl
-    - libntlm
+    - libntlm  # [unix]
+    - libdb  # [win]
     
 test:
   commands:
     - echo "DONE"
+    - if not exist %LIBRARY_LIB%\\libsasl.lib exit 1  # [win]
 
 about:
   home: https://www.cyrusimap.org/sasl/
@@ -79,3 +93,4 @@ extra:
     - martindurant
     - mingwandroid
     - wesm
+    - StephenSmith25
