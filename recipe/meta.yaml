@@ -1,5 +1,5 @@
 {% set name = "cyrus-sasl" %}
-{% set version = "2.1.27" %}
+{% set version = "2.1.28" %}
 
 package:
   name: {{ name }}
@@ -12,7 +12,7 @@ source:
   # - url: ftp://ftp.cyrusimap.org/cyrus-sasl/{{ name }}-{{ version }}.tar.gz
   
   url: https://github.com/cyrusimap/cyrus-sasl/archive/cyrus-sasl-{{ version }}.tar.gz
-  sha256: b564d773803dc4cff42d2bdc04c80f2b105897a724c247817d4e4a99dd6b9976
+  sha256: 3e38933a30b9ce183a5488b4f6a5937a702549cde0d3287903d80968ad4ec341
   
   patches:
     # - 0001-Include-stddef-in-sasl-h-for-size_t.patch
@@ -30,7 +30,7 @@ source:
     - patches/0007-win32-Skip-building-documentation-doc-folder-has-no-.patch  # [win]
     
 build:
-  number: 5
+  number: 0
   missing_dso_whitelist:          # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
     - /usr/lib/libpam.2.dylib     # [osx]
@@ -53,6 +53,7 @@ requirements:
     - m2-bash  # [win]
     - m2-patch  # [win]
     - m2-gcc-libs  # [win]
+    - sysroot_linux-64 2.17  # [linux64]
   host:
     - krb5  # [unix]
     - openssl
@@ -94,3 +95,4 @@ extra:
     - mingwandroid
     - wesm
     - StephenSmith25
+    - notestaff
