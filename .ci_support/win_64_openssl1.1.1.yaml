@@ -1,18 +1,15 @@
 VERBOSE_AT:
 - V=1
 c_compiler:
-- vs2017
+- vs2019
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2017
+- vs2019
 openssl:
 - 1.1.1
-pin_run_as_build:
-  sqlite:
-    max_pin: x
 sqlite:
 - '3'
 target_platform:
