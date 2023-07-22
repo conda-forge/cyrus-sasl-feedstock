@@ -1,5 +1,5 @@
 {% set name = "cyrus-sasl" %}
-{% set version = "2.1.27" %}
+{% set version = "2.1.28" %}
 
 package:
   name: {{ name }}
@@ -10,10 +10,9 @@ source:
   # - url: https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-{{ version }}/cyrus-sasl-{{ version }}.tar.gz
   #   sha256: 26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5
   # - url: ftp://ftp.cyrusimap.org/cyrus-sasl/{{ name }}-{{ version }}.tar.gz
-  
   url: https://github.com/cyrusimap/cyrus-sasl/archive/cyrus-sasl-{{ version }}.tar.gz
-  sha256: b564d773803dc4cff42d2bdc04c80f2b105897a724c247817d4e4a99dd6b9976
-  
+  sha256: 3e38933a30b9ce183a5488b4f6a5937a702549cde0d3287903d80968ad4ec341
+
   patches:
     # - 0001-Include-stddef-in-sasl-h-for-size_t.patch
     # Patches for disabling framework things
@@ -28,10 +27,9 @@ source:
     - patches/0005-win32-Disable-staticopen-stuff.patch  # [win]
     - patches/0006-win32-Define-GCC_FALLTHROUGH.patch  # [win]
     - patches/0007-win32-Skip-building-documentation-doc-folder-has-no-.patch  # [win]
-    
 build:
-  number: 7
-  missing_dso_whitelist:          # [osx]
+  number: 0
+  missing_dso_whitelist:   # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
     - /usr/lib/libpam.2.dylib     # [osx]
   run_exports:
@@ -65,7 +63,6 @@ requirements:
     - openssl
     - libntlm  # [unix]
     - libdb  # [win]
-    
 test:
   commands:
     - echo "DONE"
