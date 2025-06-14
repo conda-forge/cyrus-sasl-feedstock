@@ -48,6 +48,7 @@ requirements:
   host:
     - krb5  # [unix]
     - openssl
+    - libxcrypt  # [linux]
     - libdb ==6.2.*  # [win]
     - libntlm  # [unix]
     - sqlite  # [win]
