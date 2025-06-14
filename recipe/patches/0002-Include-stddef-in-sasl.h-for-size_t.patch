@@ -1,14 +1,14 @@
-From d88a86e143194bda0df3c9db9cd6df4a3f445b2a Mon Sep 17 00:00:00 2001
+From 68deb7a8b027089b0e5a5cb80d3376f917730a01 Mon Sep 17 00:00:00 2001
 From: Jonathan Helmus <jjhelmus@gmail.com>
 Date: Tue, 30 Oct 2018 10:22:04 -0500
-Subject: [PATCH 2/8] Include stddef in sasl.h for size_t
+Subject: [PATCH 2/6] Include stddef in sasl.h for size_t
 
 ---
  include/sasl.h | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/include/sasl.h b/include/sasl.h
-index 4cd4efae..c13aaa8d 100755
+index dc04ca47..7581b823 100755
 --- a/include/sasl.h
 +++ b/include/sasl.h
 @@ -132,6 +132,8 @@

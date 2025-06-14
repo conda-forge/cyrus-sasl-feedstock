@@ -1,7 +1,7 @@
-From 88121d7665b482e5e1dc2ae289c9732455a3b1d4 Mon Sep 17 00:00:00 2001
+From aadfc31895d9e8a02927609ac0c0700a67f7c52e Mon Sep 17 00:00:00 2001
 From: Jonathan Helmus <jjhelmus@gmail.com>
 Date: Tue, 30 Oct 2018 10:24:54 -0500
-Subject: [PATCH 3/8] adjust Makefile.am files for osx
+Subject: [PATCH 3/6] adjust Makefile.am files for osx
 
 ---
  Makefile.am         | 14 --------------
@@ -10,12 +10,12 @@ Subject: [PATCH 3/8] adjust Makefile.am files for osx
  3 files changed, 28 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index 83dae6f8..ad36a2f6 100644
+index f7d3b22e..d606711c 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -64,11 +64,6 @@ JAV = java
+@@ -59,11 +59,6 @@ SAM = sample
  else
- JAV =
+ SAM =
  endif
 -if MACOSX
 -INSTALLOSX = install-exec-local-osx
@@ -23,9 +23,9 @@ index 83dae6f8..ad36a2f6 100644
 -INSTALLOSX = 
 -endif
  
- SUBDIRS=include sasldb common lib plugins utils $(PWC) $(SAM) $(JAV) $(SAD)
+ SUBDIRS=include sasldb common lib plugins utils $(PWC) $(SAM) $(SAD)
  EXTRA_DIST=config doc docsrc win32 mac dlcompat-20010505 NTMakefile \
-@@ -148,15 +143,6 @@ dist-hook:
+@@ -143,15 +138,6 @@ dist-hook:
  	find $(top_distdir) -type f -name .sphinx-build.stamp -delete
  	rm -rf $(top_distdir)/$(SPHINX_CACHE)
  
@@ -58,10 +58,10 @@ index c942efa9..d401f4b5 100644
  # TODO: automake, don't build it
  makemd5$(EXEEXT):
 diff --git a/lib/Makefile.am b/lib/Makefile.am
-index 72ada6d4..65043888 100644
+index 9a43ae0d..4258bfcb 100644
 --- a/lib/Makefile.am
 +++ b/lib/Makefile.am
-@@ -86,15 +86,7 @@ if BUILD_LIBOBJ
+@@ -87,15 +87,7 @@ if BUILD_LIBOBJ
  libsasl2_la_LIBADD += libobj.la
  endif
  

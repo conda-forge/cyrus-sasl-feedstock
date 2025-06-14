@@ -18,10 +18,8 @@ source:
     - patches/0002-Include-stddef-in-sasl.h-for-size_t.patch                    # [win]
     - patches/0003-adjust-Makefile.am-files-for-osx.patch                       # [win]
     - patches/0004-windows-fixes.patch                                          # [win]
-    - patches/0005-openssl-1.1.1-support-on-windows.patch                       # [win]
-    - patches/0006-win32-Disable-staticopen-stuff.patch                         # [win]
-    - patches/0007-win32-Define-GCC_FALLTHROUGH.patch                           # [win]
-    - patches/0008-win32-Skip-building-documentation-doc-folder-has-no-.patch   # [win]
+    - patches/0005-win32-Disable-staticopen-stuff.patch                         # [win]
+    - patches/0006-win32-Define-GCC_FALLTHROUGH.patch                           # [win]
 build:
   number: 0
   missing_dso_whitelist:   # [osx]
