@@ -21,7 +21,7 @@ source:
     - patches/0005-win32-Disable-staticopen-stuff.patch         # [win]
     - patches/0006-win32-Define-GCC_FALLTHROUGH.patch           # [win]
 build:
-  number: 0
+  number: 1
   missing_dso_whitelist:   # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
     - /usr/lib/libpam.2.dylib     # [osx]
