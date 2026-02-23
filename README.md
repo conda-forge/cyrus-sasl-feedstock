@@ -210,6 +210,7 @@ Feedstock Maintainers
 =====================
 
 * [@StephenSmith25](https://github.com/StephenSmith25/)
+* [@h-vetinari](https://github.com/h-vetinari/)
 * [@mariusvniekerk](https://github.com/mariusvniekerk/)
 * [@martindurant](https://github.com/martindurant/)
 * [@mingwandroid](https://github.com/mingwandroid/)
