@@ -1,0 +1,5 @@
+# seems to depend on transitive import of time.h removed in GCC 14
+c_compiler_version:     # [linux]
+  - 13                  # [linux]
+cxx_compiler_version:   # [linux]
+  - 13                  # [linux]
